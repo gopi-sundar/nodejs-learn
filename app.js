@@ -1,5 +1,14 @@
-var util = require('util');
+var Emitter = require('./emitter');
 
-var name = 'Tony';
-var greeting = util.format('Hello, %s', name);
-util.log(greeting);
+var emtr = new Emitter();
+
+emtr.on('greet', function() {
+	console.log('Somewhere, someone said hello.');
+});
+
+emtr.on('greet', function() {
+	console.log('A greeting occurred!');
+});
+
+console.log('Hello!');
+emtr.emit('greet');
