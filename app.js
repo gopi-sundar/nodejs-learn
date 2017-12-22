@@ -1,10 +1,8 @@
-var fs = require('fs');
+var http = require('http');
 
-var readable = fs.createReadStream(__dirname + '/greet.txt', { encoding: 'utf8', highWaterMark: 16 * 1024 });
+http.createServer(function (req, res) {
 
-var writable = fs.createWriteStream(__dirname + '/greetcopy.txt');
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
 
-readable.on('data', function(chunk) {
-	console.log(chunk);
-	writable.write(chunk);
-});
+}).listen(1337, '127.0.0.1');
