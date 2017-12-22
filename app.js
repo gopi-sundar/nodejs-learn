@@ -1,8 +1,10 @@
-var buf = new Buffer('Hello', 'utf8');
-console.log(buf);
-console.log(buf.toString());
-console.log(buf.toJSON());
-console.log(buf[2]);
+var fs = require('fs');
 
-buf.write('wo');
-console.log(buf.toString());
+var greet = fs.readFileSync(__dirname + '/greet.txt', 'utf8');
+console.log(greet);
+
+var greet2 = fs.readFile(__dirname + '/greet.txt', 'utf8', function(err, data) {
+	console.log(data);
+});
+
+console.log('Done!');
